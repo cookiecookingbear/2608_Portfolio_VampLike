@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 //인터페이스 모음
 
@@ -23,5 +24,6 @@ public interface IDamageable
 
 public interface IWeapon
 {
-    void Fire();
+    Coroutine StartFireCoroutine();
+    void Init(float detectRadius);
 }

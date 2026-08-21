@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Player_Move playerMove;
     [SerializeField] private Player_Combat playerCombat;
-    [SerializeField] private ProjectileWeapon projectileWeapon;
+    [SerializeField] private Player_WeaponModule weaponModule;
 
     [SerializeField] private Animator anim;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     {
         playerMove.GetMoveSpeed(stats.MoveSpeed);
         playerCombat.GetInitialStats(stats.HP, stats.InvulnerableTime);
-        projectileWeapon.Init(stats.EnemyDetectRadius);
+        weaponModule.Init(stats.EnemyDetectRadius);
     }
 
     private void GameOver()

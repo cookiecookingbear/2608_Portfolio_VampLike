@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player_Stats
   moveSpeed: 3
   hp: 100
+  invulnerableTime: 0.5
+  enemyDetectRadius: 20

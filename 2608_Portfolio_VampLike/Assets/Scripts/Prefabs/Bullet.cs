@@ -5,28 +5,24 @@
 public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private CapsuleCollider2D capsuleCollider;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
-
-    public void Init(Vector3 dir, float speed) 
+        public void Init(Vector3 dir, float speed) 
     {
         transform.up = dir;
         rb.linearVelocity = dir * speed;
     }
 
-    private void FixedUpdate_Flying()
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("Enemy") == false) return;
 
+        Destroy(gameObject);
     }
+
 
 }

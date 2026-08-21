@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// 최대 3개의 무기를 장착하는 모듈
@@ -8,5 +9,56 @@
 /// </summary>
 public class Player_WeaponModule : MonoBehaviour
 {
-    
+    private List<IWeapon> weapons = new List<IWeapon>();
+
+    private float detectRadius;
+    private int weaponCount = 0;
+
+
+    private void Awake()
+    {
+        
+    }
+    private void Start()
+    {
+        
+    }
+
+    public void Init(float detectRadius)
+    {
+        this.detectRadius = detectRadius;
+        RegisterInitialWeapon();
+    }
+
+    /// <summary>
+    /// 최초 게임 시작시 기본무기 등록
+    /// </summary>
+    private void RegisterInitialWeapon()
+    {
+        IWeapon weapon = GetComponentInChildren<IWeapon>();
+        if(weapon == null)
+        {
+            Debug.LogError($"cannot find IWeapon", this);
+            weapon = GetComponentInChildren<Gun>();
+        }
+        weapons.Add(weapon);
+        weapon.Init(detectRadius);
+        weapon.StartFireCoroutine();
+        weaponCount++;
+        //RegisterInFireCoroutines();
+    }
+
+    /// <summary>
+    /// 무기 추가시 호출
+    /// </summary>
+    private void AddWeapon()
+    {
+        //컴포넌트 불러오는 방식 수정해야됨
+        IWeapon weapon = GetComponentInChildren<IWeapon>();
+        weapons.Add(weapon);
+        weapon.Init(detectRadius);
+        weaponCount++;
+        //RegisterInFireCoroutines();
+    }
+
 }
