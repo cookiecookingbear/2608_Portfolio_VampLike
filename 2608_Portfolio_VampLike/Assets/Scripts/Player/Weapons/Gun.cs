@@ -6,17 +6,9 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Weapon_Stats stats;
 
+    [SerializeField] private Player_EnemyDetector detector;
 
-    [SerializeField] private LayerMask enemyLayerMask;
-    private float detectRadius;
     private Coroutine fireCoroutine;
-
-    
-
-    public void Init(float detectRadius)
-    {
-        this.detectRadius = detectRadius;
-    }
 
     public void StartFireCoroutine()
     {
@@ -32,7 +24,7 @@ public class Gun : MonoBehaviour, IWeapon
     {
         while (true)
         {
-            Vector2 direction = transform.DetectNearestMonsterDirection(detectRadius, enemyLayerMask);
+            Vector2 direction = detector.DetectNearestMonsterDirection();
 
             GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(direction));
 

@@ -18,7 +18,6 @@ public class Monster_Combat : MonoBehaviour, IDamageable
     {
         playerLayer = LayerMask.NameToLayer("Player");
     }
-   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GiveDamageToPlayer(collision);

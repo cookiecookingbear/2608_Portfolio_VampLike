@@ -24,6 +24,6 @@ public interface IDamageable
 
 public interface IWeapon
 {
-    Coroutine StartFireCoroutine();
-    void Init(float detectRadius);
+    void StartFireCoroutine();
+    void StopFireCoroutine();
 }

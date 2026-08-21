@@ -9,24 +9,14 @@ using UnityEngine;
 /// </summary>
 public class Player_WeaponModule : MonoBehaviour
 {
+    [SerializeField] private Player_EnemyDetector detector;
     private List<IWeapon> weapons = new List<IWeapon>();
 
-    private float detectRadius;
     private int weaponCount = 0;
-
-
-    private void Awake()
-    {
-        
-    }
-    private void Start()
-    {
-        
-    }
 
     public void Init(float detectRadius)
     {
-        this.detectRadius = detectRadius;
+        detector.Init(detectRadius);
         RegisterInitialWeapon();
     }
 
@@ -42,7 +32,6 @@ public class Player_WeaponModule : MonoBehaviour
             weapon = GetComponentInChildren<Gun>();
         }
         weapons.Add(weapon);
-        weapon.Init(detectRadius);
         weapon.StartFireCoroutine();
         weaponCount++;
         //RegisterInFireCoroutines();
@@ -56,9 +45,7 @@ public class Player_WeaponModule : MonoBehaviour
         //컴포넌트 불러오는 방식 수정해야됨
         IWeapon weapon = GetComponentInChildren<IWeapon>();
         weapons.Add(weapon);
-        weapon.Init(detectRadius);
         weaponCount++;
-        //RegisterInFireCoroutines();
     }
 
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2536127737711209620}
   m_Layer: 6
   m_Name: Combat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,9 +94,9 @@ GameObject:
   - component: {fileID: 1476008190065077743}
   - component: {fileID: 5772303661566477838}
   - component: {fileID: 3010472802987299794}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Enemy1
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
