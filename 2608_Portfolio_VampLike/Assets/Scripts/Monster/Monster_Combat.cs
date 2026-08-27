@@ -32,6 +32,7 @@ public class Monster_Combat : MonoBehaviour, IDamageable
     {
         this.power = power;
         this.hp = hp;
+        print($"최대 체력: {hp}");
     }
 
     public void TakeDamage(float power)
@@ -39,6 +40,7 @@ public class Monster_Combat : MonoBehaviour, IDamageable
         hp -= power;
 
         InvokeAnimationEvent(hp);
+        print($"남은 체력: {hp}");
     }
 
     private void InvokeAnimationEvent(float hp)

@@ -26,4 +26,5 @@ public interface IWeapon
 {
     void StartFireCoroutine();
     void StopFireCoroutine();
+    void Init(Player_EnemyDetector detector,WeaponData weaponData);
 }

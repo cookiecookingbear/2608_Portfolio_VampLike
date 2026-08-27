@@ -15,7 +15,6 @@ public class Player_EnemyDetector : MonoBehaviour
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectRadius, enemyLayerMask);
         
-        print($"감지된 적 수: {colliders.Length}");
         if (colliders.Length == 0)
         {
             return Vector2.left;

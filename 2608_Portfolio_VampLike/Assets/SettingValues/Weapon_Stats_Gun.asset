@@ -15,3 +15,5 @@ MonoBehaviour:
   power: 3
   cooldown: 1
   projectileSpeed: 5
+  maxProjectileCount: 0
+  projectileLifetimeDuration: 5

@@ -3,12 +3,17 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour, IWeapon
 {
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Weapon_Stats stats;
+    [SerializeField] private WeaponData weaponData;
 
     [SerializeField] private Player_EnemyDetector detector;
 
     private Coroutine fireCoroutine;
+
+    public void Init(Player_EnemyDetector detector, WeaponData weaponData)
+    {
+        this.detector = detector;
+        this.weaponData = weaponData;
+    }
 
     public void StartFireCoroutine()
     {
@@ -26,12 +31,12 @@ public class Gun : MonoBehaviour, IWeapon
         {
             Vector2 direction = detector.DetectNearestMonsterDirection();
 
-            GameObject bullet = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(direction));
+            GameObject bullet = Instantiate(weaponData.ProjectilePrefab, transform.position, Quaternion.Euler(direction));
 
             Bullet obj = bullet.GetComponent<Bullet>();
-            obj.Init(direction, stats.ProjectileSpeed);
+            obj.Init(direction, weaponData.Stats.ProjectileSpeed);
 
-            yield return new WaitForSeconds(stats.Cooldown);
+            yield return new WaitForSeconds(weaponData.Stats.Cooldown);
         }//while
     }
 

@@ -10,42 +10,63 @@ using UnityEngine;
 public class Player_WeaponModule : MonoBehaviour
 {
     [SerializeField] private Player_EnemyDetector detector;
-    private List<IWeapon> weapons = new List<IWeapon>();
+    [SerializeField] private WeaponCatalogue catalogue;
 
-    private int weaponCount = 0;
+    //private List<IWeapon> weapons = new List<IWeapon>();
+    private Dictionary<WeaponData, IWeapon> weapons = new Dictionary<WeaponData, IWeapon>();
+
+    //private int weaponCount = 0;
+
+    #region Testing
+    private void Update()
+    {
+        CheatKey();
+    }
+    private void CheatKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            AddWeapon(catalogue.WeaponInfoList[0]);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            AddWeapon(catalogue.WeaponInfoList[1]);
+        }
+
+    }
+    #endregion
 
     public void Init(float detectRadius)
     {
         detector.Init(detectRadius);
-        RegisterInitialWeapon();
+        //RegisterInitialWeapon();
+    }
+    
+    //추후에 레벨업UI에서 호출 가능성 있음
+    private void SelectWeapon(WeaponInfo weaponInfo)
+    {
+        //if(weapons에 weaponInfo.WeaponData(키)가 없음) => 새 무기
+        AddWeapon(weaponInfo);
+        //return;
+
+        //이미 있는 무기
+        //UpgrageWeapon(weaponInfo);
+    }
+    
+    private void AddWeapon(WeaponInfo weaponInfo)
+    {
+        GameObject newWeaponObject = Instantiate(weaponInfo.WeaponPrefab, gameObject.transform);
+        IWeapon newWeapon = newWeaponObject.GetComponent<IWeapon>();
+
+        newWeapon.Init(detector, weaponInfo.WeaponData);
+        newWeapon.StartFireCoroutine();
+        weapons.Add(weaponInfo.WeaponData, newWeapon);
     }
 
-    /// <summary>
-    /// 최초 게임 시작시 기본무기 등록
-    /// </summary>
-    private void RegisterInitialWeapon()
+    private void UpgrageWeapon(WeaponInfo weaponInfo)
     {
-        IWeapon weapon = GetComponentInChildren<IWeapon>();
-        if(weapon == null)
-        {
-            Debug.LogError($"cannot find IWeapon", this);
-            weapon = GetComponentInChildren<Gun>();
-        }
-        weapons.Add(weapon);
-        weapon.StartFireCoroutine();
-        weaponCount++;
-        //RegisterInFireCoroutines();
-    }
 
-    /// <summary>
-    /// 무기 추가시 호출
-    /// </summary>
-    private void AddWeapon()
-    {
-        //컴포넌트 불러오는 방식 수정해야됨
-        IWeapon weapon = GetComponentInChildren<IWeapon>();
-        weapons.Add(weapon);
-        weaponCount++;
     }
 
 }

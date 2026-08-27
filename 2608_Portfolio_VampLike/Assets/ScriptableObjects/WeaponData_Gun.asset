@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da9101b6e29d094f874dce37620443b, type: 3}
+  m_Name: WeaponData_Gun
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  projectilePrefab: {fileID: 7190548922807369388, guid: cafcea6122d2f3d40b65a6b624761a8d, type: 3}
+  stats: {fileID: 11400000, guid: 7a83bde692c7144418adfef7d560b278, type: 2}

@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-        public void Init(Vector3 dir, float speed) 
+    public void Init(Vector3 dir, float speed) 
     {
         transform.up = dir;
         rb.linearVelocity = dir * speed;
