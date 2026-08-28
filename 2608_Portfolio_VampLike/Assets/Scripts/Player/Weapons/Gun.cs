@@ -10,11 +10,18 @@ public class Gun : MonoBehaviour, IWeapon
     private Coroutine fireCoroutine;
 
     private int weaponLevel = 0;
+    private Weapon_Stats[] stats;
+    private Weapon_Stats currentStats;
+
+    private bool isUpgradeAvailable = true;
 
     public void Init(Player_EnemyDetector detector, WeaponData weaponData)
     {
         this.detector = detector;
         this.weaponData = weaponData;
+        stats = weaponData.Stats;
+        currentStats = stats[weaponLevel];
+        weaponLevel++;
     }
 
     public void StartFireCoroutine()
@@ -36,16 +43,30 @@ public class Gun : MonoBehaviour, IWeapon
             GameObject bullet = Instantiate(weaponData.ProjectilePrefab, transform.position, Quaternion.Euler(direction));
 
             Bullet obj = bullet.GetComponent<Bullet>();
-            obj.Init(direction, weaponData.Stats.ProjectileSpeed);
-            obj.GetPower(weaponData.Stats.Power);
+            obj.Init(direction, currentStats.ProjectileSpeed, currentStats.ProjectileLifetimeDuration);
+            obj.GetPower(currentStats.Power);
 
-            yield return new WaitForSeconds(weaponData.Stats.Cooldown);
+            yield return new WaitForSeconds(currentStats.Cooldown);
         }//while
     }
 
     public void Upgrade()
     {
+        if (isUpgradeAvailable == false)
+        {
+            print("이미 무기가 최고단계임");
+            return;
+        }
+        
+        currentStats = stats[weaponLevel];
+        weaponLevel++;
+        print($"현재 무기 레벨: {weaponLevel}");
 
+        if(weaponLevel == 6)
+        {
+            isUpgradeAvailable = false;
+            print("무기가 최고단계에 도달함");
+        }
     }
-    
+
 }

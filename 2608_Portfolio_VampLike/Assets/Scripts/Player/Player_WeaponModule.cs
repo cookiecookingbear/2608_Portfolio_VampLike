@@ -26,12 +26,12 @@ public class Player_WeaponModule : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            AddWeapon(catalogue.WeaponInfoList[0]);
+            SelectWeapon(catalogue.WeaponInfoList[0]);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            AddWeapon(catalogue.WeaponInfoList[1]);
+            SelectWeapon(catalogue.WeaponInfoList[1]);
         }
 
     }
@@ -46,13 +46,15 @@ public class Player_WeaponModule : MonoBehaviour
     private void SelectWeapon(WeaponInfo weaponInfo)
     {
         //if(weapons에 weaponInfo.WeaponData(키)가 없음) => 새 무기
-        AddWeapon(weaponInfo);
-        //return;
-
+        if(weapons.ContainsKey(weaponInfo.WeaponData) == false)
+        {
+            AddWeapon(weaponInfo);
+            return;
+        }
         //이미 있는 무기
-        //UpgrageWeapon(weaponInfo);
+        UpgrageWeapon(weaponInfo);
     }
-    
+        
     private void AddWeapon(WeaponInfo weaponInfo)
     {
         GameObject newWeaponObject = Instantiate(weaponInfo.WeaponPrefab, gameObject.transform);

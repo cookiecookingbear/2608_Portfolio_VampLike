@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: WeaponData_Scythe
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   projectilePrefab: {fileID: 6930066284538766999, guid: 6ee42a4044e289348b992eb2fef1e42d, type: 3}
-  stats: {fileID: 11400000, guid: cc1fbec82a499ed49b11dc99b41e66e1, type: 2}
+  stats:
+  - {fileID: 11400000, guid: cc1fbec82a499ed49b11dc99b41e66e1, type: 2}
+  - {fileID: 11400000, guid: 124d236386e93ba44a6a87f66a733225, type: 2}
+  - {fileID: 11400000, guid: d972d22b4f95e8f46971fc6bd15416f8, type: 2}
+  - {fileID: 11400000, guid: 69a3cf8cd3309a84b9cd2eb884394d57, type: 2}
+  - {fileID: 11400000, guid: e2f270f322dfeab41ba28dbdb9a7fb21, type: 2}
+  - {fileID: 11400000, guid: 521cd0585f79316479d1c76bcf598882, type: 2}

@@ -7,22 +7,33 @@ public class Bullet : MonoBehaviour, IProjectile
     private Rigidbody2D rb;
     private float power;
     private int enemyLayer;
+    private float duration;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         enemyLayer = LayerMask.NameToLayer("Enemy");
     }
+    private void Update()
+    {
+        if(duration <= 0)
+        {
+            duration = 0;
+            Destroy(gameObject);
+        }
 
-    
+        duration -= Time.deltaTime;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         GiveDamage(other);
     }
-    public void Init(Vector3 dir, float speed)
+    public void Init(Vector3 dir, float speed,float duration)
     {
         transform.up = dir;
         rb.linearVelocity = dir * speed;
+        this.duration = duration;
     }
 
     public void GetPower(float power)

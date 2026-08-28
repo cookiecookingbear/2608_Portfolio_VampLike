@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07f8436c32e0dc948adce6c0c10ed209, type: 3}
-  m_Name: Weapon_UpgradeStats_Gun 0
+  m_Name: Weapon_Stats_Scythe_Lv5
   m_EditorClassIdentifier: Assembly-CSharp::Weapon_Stats
-  power: 3
-  cooldown: 1
-  projectileSpeed: 5
-  maxProjectileCount: 0
-  projectileLifetimeDuration: 5
+  power: 8
+  cooldown: 13
+  projectileSpeed: 150
+  maxProjectileCount: 5
+  projectileLifetimeDuration: 8
