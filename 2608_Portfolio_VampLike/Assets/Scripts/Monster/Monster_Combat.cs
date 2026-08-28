@@ -23,7 +23,6 @@ public class Monster_Combat : MonoBehaviour, IDamageable
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GiveDamageToPlayer(collision);
-        TakeDamageFromProjectiles(collision);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -66,12 +65,4 @@ public class Monster_Combat : MonoBehaviour, IDamageable
         playerCombat.TakeDamage(power);
     }
 
-    private void TakeDamageFromProjectiles(Collider2D collision)
-    {
-        if (collision.gameObject.layer != projecitleLayer) return;
-
-        IProjectile projectile = collision.gameObject.GetComponent<IProjectile>();
-
-        TakeDamage(projectile.GiveDamage());
-    }
 }

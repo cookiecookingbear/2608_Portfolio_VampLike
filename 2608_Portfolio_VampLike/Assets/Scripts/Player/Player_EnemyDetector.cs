@@ -24,6 +24,6 @@ public class Player_EnemyDetector : MonoBehaviour
 
         Vector2 direction = nearestMonsterPosition - (Vector2)transform.position;
 
-        return direction;
+        return direction.normalized;
     }
 }
