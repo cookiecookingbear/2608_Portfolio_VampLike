@@ -44,16 +44,20 @@ public class Scythe : MonoBehaviour,IWeapon
                 Vector2 instantitatePosition = new Vector2(instantiatePositionX, instantiatePositionY) * orbitRadius;
                 float instantiateTimeInterval = (360f / weaponData.Stats.MaxProjectileCount) / weaponData.Stats.ProjectileSpeed;
 
-
                 GameObject scytheProjectile = Instantiate(weaponData.ProjectilePrefab, transform,true);
                 Scythe_Projectile obj = scytheProjectile.GetComponent<Scythe_Projectile>();
 
                 obj.Init(-weaponData.Stats.ProjectileSpeed, instantitatePosition, weaponData.Stats.ProjectileLifetimeDuration);
+                obj.GetPower(weaponData.Stats.Power);
 
                 yield return new WaitForSeconds(instantiateTimeInterval);
 
             }
             yield return new WaitForSeconds(weaponData.Stats.Cooldown);
         }
+    }
+    public void Upgrade()
+    {
+
     }
 }

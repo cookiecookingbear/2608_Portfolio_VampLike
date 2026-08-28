@@ -27,4 +27,11 @@ public interface IWeapon
     void StartFireCoroutine();
     void StopFireCoroutine();
     void Init(Player_EnemyDetector detector,WeaponData weaponData);
+    void Upgrade();
+}
+
+public interface IProjectile
+{
+    void GetPower(float power);
+    float GiveDamage();
 }

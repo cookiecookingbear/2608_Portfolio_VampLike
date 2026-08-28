@@ -40,7 +40,6 @@ public class Player_WeaponModule : MonoBehaviour
     public void Init(float detectRadius)
     {
         detector.Init(detectRadius);
-        //RegisterInitialWeapon();
     }
     
     //추후에 레벨업UI에서 호출 가능성 있음
@@ -66,7 +65,7 @@ public class Player_WeaponModule : MonoBehaviour
 
     private void UpgrageWeapon(WeaponInfo weaponInfo)
     {
-
+        weapons[weaponInfo.WeaponData].Upgrade();
     }
 
 }

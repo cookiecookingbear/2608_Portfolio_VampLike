@@ -10,6 +10,7 @@ public class Monster_Combat : MonoBehaviour, IDamageable
     private float power;
     private float hp;
     private int playerLayer;
+    private int projecitleLayer;
 
     public Action Damaged_event;
     public Action Dead_event;
@@ -17,10 +18,12 @@ public class Monster_Combat : MonoBehaviour, IDamageable
     private void Awake()
     {
         playerLayer = LayerMask.NameToLayer("Player");
+        projecitleLayer = LayerMask.NameToLayer("Player_Projectiles");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GiveDamageToPlayer(collision);
+        TakeDamageFromProjectiles(collision);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -61,5 +64,14 @@ public class Monster_Combat : MonoBehaviour, IDamageable
         Player_Combat playerCombat = collision.gameObject.GetComponent<Player_Combat>();
 
         playerCombat.TakeDamage(power);
+    }
+
+    private void TakeDamageFromProjectiles(Collider2D collision)
+    {
+        if (collision.gameObject.layer != projecitleLayer) return;
+
+        IProjectile projectile = collision.gameObject.GetComponent<IProjectile>();
+
+        TakeDamage(projectile.GiveDamage());
     }
 }

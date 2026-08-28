@@ -272,8 +272,8 @@ MonoBehaviour:
     y: 0
     width: 392
     height: 563
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 226}
+  m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 43
+    y: 0
     width: 1920
     height: 36
   m_SerializedDataModeController:
@@ -670,8 +670,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1456
-    y: 79
+    x: 1
+    y: 24
     width: 463
     height: 525
   m_SerializedDataModeController:
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
+    y: 24
     width: 1063
     height: 481
   m_SerializedDataModeController:
@@ -1526,7 +1526,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 586
+    y: 531
     width: 1063
     height: 400
   m_SerializedDataModeController:
@@ -1670,8 +1670,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1064
-    y: 79
+    x: 1
+    y: 24
     width: 390
     height: 537
   m_SerializedDataModeController:
@@ -1746,8 +1746,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1064
-    y: 642
+    x: 1
+    y: 587
     width: 390
     height: 344
   m_SerializedDataModeController:
@@ -1784,8 +1784,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Project\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1456
-    y: 630
+    x: 1
+    y: 575
     width: 463
     height: 356
   m_SerializedDataModeController:
@@ -1837,16 +1837,14 @@ MonoBehaviour:
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 63370
-    - m_Data: 68026
-    - m_Data: 68028
-    - m_Data: 68030
-    - m_Data: 68032
-    - m_Data: 68034
-    - m_Data: 68036
-    - m_Data: 68038
-    - m_Data: 68040
-    - m_Data: 68194
-    - m_Data: 1000000000
+    - m_Data: 67760
+    - m_Data: 67762
+    - m_Data: 67764
+    - m_Data: 67766
+    - m_Data: 67768
+    - m_Data: 67770
+    - m_Data: 67772
+    - m_Data: 67774
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1881,14 +1879,14 @@ MonoBehaviour:
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 63370
-    - m_Data: 68026
-    - m_Data: 68028
-    - m_Data: 68030
-    - m_Data: 68032
-    - m_Data: 68034
-    - m_Data: 68036
-    - m_Data: 68038
-    - m_Data: 68040
+    - m_Data: 67760
+    - m_Data: 67762
+    - m_Data: 67764
+    - m_Data: 67766
+    - m_Data: 67768
+    - m_Data: 67770
+    - m_Data: 67772
+    - m_Data: 67774
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

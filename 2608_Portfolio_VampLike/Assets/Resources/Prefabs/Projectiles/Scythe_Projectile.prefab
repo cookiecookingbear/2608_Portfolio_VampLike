@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8601956128720041315}
   - component: {fileID: 6780961173775550415}
   - component: {fileID: 2619939652280884301}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Scythe_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

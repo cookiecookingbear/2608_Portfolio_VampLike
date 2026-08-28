@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider2D))]
-public class Scythe_Projectile : MonoBehaviour
+public class Scythe_Projectile : MonoBehaviour,IProjectile
 {
     private float angularSpeed;
     private float duration;
+    private float power;
 
     private void Update()
     {
@@ -18,22 +19,28 @@ public class Scythe_Projectile : MonoBehaviour
         
         duration -= Time.deltaTime;
     }
-    /// <summary>
-    /// 투사체 자체의 회전(궤도회전 아님)속도 받아서 자체적으로 회전하게끔
-    /// </summary>
-    /// <param name="zAngularSpeed"></param>
-    /// <param name="orbitRadius"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") == false) return;
+
+
+    }
+
     public void Init(float zAngularSpeed, Vector2 instantiatePosition,float duration)
     {
         angularSpeed = zAngularSpeed;
         transform.localPosition = instantiatePosition;
         this.duration = duration;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    public void GetPower(float power)
     {
-        if (collision.gameObject.CompareTag("Enemy") == false) return;
-
-        
+        this.power = power;
     }
+
+    public float GiveDamage()
+    {
+        return power;
+    }
+
 }

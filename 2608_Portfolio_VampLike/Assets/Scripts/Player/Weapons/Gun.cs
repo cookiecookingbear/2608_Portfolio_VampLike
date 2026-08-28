@@ -9,6 +9,8 @@ public class Gun : MonoBehaviour, IWeapon
 
     private Coroutine fireCoroutine;
 
+    private int weaponLevel = 0;
+
     public void Init(Player_EnemyDetector detector, WeaponData weaponData)
     {
         this.detector = detector;
@@ -35,10 +37,15 @@ public class Gun : MonoBehaviour, IWeapon
 
             Bullet obj = bullet.GetComponent<Bullet>();
             obj.Init(direction, weaponData.Stats.ProjectileSpeed);
+            obj.GetPower(weaponData.Stats.Power);
 
             yield return new WaitForSeconds(weaponData.Stats.Cooldown);
         }//while
     }
 
+    public void Upgrade()
+    {
+
+    }
     
 }
