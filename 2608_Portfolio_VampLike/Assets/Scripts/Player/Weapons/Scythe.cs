@@ -77,6 +77,8 @@ public class Scythe : MonoBehaviour,IWeapon
         }
 
         currentStats = stats[weaponLevel];
+        StopCoroutine(fireCoroutine);
+        fireCoroutine = StartCoroutine("Fire");
         weaponLevel++;
         print($"현재 무기 레벨: {weaponLevel}");
 
