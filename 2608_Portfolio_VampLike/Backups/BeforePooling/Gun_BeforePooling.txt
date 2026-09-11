@@ -1,0 +1,91 @@
+// ============================================================
+// Gun.cs — 오브젝트 풀링 적용 전 스냅샷
+// 원본 경로: Assets/Scripts/Player/Weapons/Gun.cs
+// 스냅샷 기준: 2026-09-11 (풀링 작업 직전 상태)
+// 용도: 풀링 유무 A/B 성능 비교(Profiler GC Alloc / 프레임 타임) 테스트용
+//
+// 이 버전의 특징:
+//   - Fire()에서 매 발사마다 Instantiate
+//   - Bullet.Init(dir, speed, duration) 3인자 시그니처 사용
+//     (풀링 버전은 startingPosition이 추가된 4인자)
+//   - ObjectPool 컴포넌트 의존 없음
+//
+// A/B 테스트 시 복원 방법:
+//   1. 이 내용을 Gun.cs에 덮어쓰기
+//   2. Bullet_BeforePooling.txt도 함께 Bullet.cs에 덮어쓰기 (Init 시그니처가 다름)
+//   3. Gun 프리팹의 ObjectPool 컴포넌트는 그대로 두어도 무해 (참조하지 않음)
+//   4. 부하를 주려면 Weapon_Stats의 cooldown을 0.02 정도로 임시 조정
+// ============================================================
+
+using System.Collections;
+using UnityEngine;
+
+public class Gun : MonoBehaviour, IWeapon
+{
+    [SerializeField] private WeaponData weaponData;
+
+    [SerializeField] private Player_EnemyDetector detector;
+
+    private Coroutine fireCoroutine;
+
+    private int weaponLevel = 0;
+    private Weapon_Stats[] stats;
+    private Weapon_Stats currentStats;
+
+    private bool isUpgradeAvailable = true;
+
+    public void Init(Player_EnemyDetector detector, WeaponData weaponData)
+    {
+        this.detector = detector;
+        this.weaponData = weaponData;
+        stats = weaponData.Stats;
+        currentStats = stats[weaponLevel];
+        weaponLevel++;
+    }
+
+    public void StartFireCoroutine()
+    {
+        fireCoroutine = StartCoroutine("Fire");
+    }
+
+    public void StopFireCoroutine()
+    {
+        StopCoroutine(fireCoroutine);
+    }
+
+    private IEnumerator Fire()
+    {
+        while (true)
+        {
+            Vector2 direction = detector.DetectNearestMonsterDirection();
+
+            GameObject bullet = Instantiate(weaponData.ProjectilePrefab, transform.position, Quaternion.Euler(direction));
+
+            Bullet obj = bullet.GetComponent<Bullet>();
+            obj.Init(direction, currentStats.ProjectileSpeed, currentStats.ProjectileLifetimeDuration);
+            obj.GetPower(currentStats.Power);
+
+            yield return new WaitForSeconds(currentStats.Cooldown);
+        }//while
+    }
+
+    public void Upgrade()
+    {
+        if (isUpgradeAvailable == false)
+        {
+            print("이미 무기가 최고단계임");
+            return;
+        }
+
+        currentStats = stats[weaponLevel];
+        weaponLevel++;
+        print($"현재 무기 레벨: {weaponLevel}");
+
+        if(weaponLevel == 6)
+        {
+            isUpgradeAvailable = false;
+            print("무기가 최고단계에 도달함");
+        }
+    }
+
+}

@@ -1,0 +1,70 @@
+// ============================================================
+// Bullet.cs — 오브젝트 풀링 적용 전 스냅샷
+// 원본 경로(당시): Assets/Scripts/Prefabs/Bullet.cs
+//   (풀링 이후 Assets/Scripts/Player/Weapons/Projectiles/Bullet.cs 로 이동됨)
+// 스냅샷 기준: 2026-08-28 duration 적용 직후 = 풀링 작업 직전 상태
+// 용도: Gun_BeforePooling.txt와 한 쌍으로 A/B 성능 비교 테스트용
+//
+// 이 버전의 특징:
+//   - 적중 시 / 수명 만료 시 Destroy(gameObject)
+//   - Init(dir, speed, duration) 3인자 (위치는 Gun이 Instantiate 시점에 지정)
+//   - IPoolable 미구현, ObjectPool 참조 없음
+//
+// 주의: 풀링 버전과 Init 시그니처가 달라서, 이 파일을 복원할 때는
+//       Gun_BeforePooling.txt도 반드시 함께 복원해야 컴파일됨.
+// ============================================================
+
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CapsuleCollider2D))]
+public class Bullet : MonoBehaviour, IProjectile
+{
+    private Rigidbody2D rb;
+    private float power;
+    private int enemyLayer;
+    private float duration;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        enemyLayer = LayerMask.NameToLayer("Enemy");
+    }
+    private void Update()
+    {
+        if(duration <= 0)
+        {
+            duration = 0;
+            Destroy(gameObject);
+        }
+
+        duration -= Time.deltaTime;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        GiveDamage(other);
+    }
+    public void Init(Vector3 dir, float speed,float duration)
+    {
+        transform.up = dir;
+        rb.linearVelocity = dir * speed;
+        this.duration = duration;
+    }
+
+    public void GetPower(float power)
+    {
+        this.power = power;
+    }
+
+    private void GiveDamage(Collider2D other)
+    {
+        if (other.gameObject.layer != enemyLayer) return;
+
+        IDamageable enemy = other.gameObject.GetComponent<IDamageable>();
+        enemy.TakeDamage(power);
+
+        Destroy(gameObject);
+    }
+
+}
