@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da9101b6e29d094f874dce37620443b, type: 3}
+  m_Name: WeaponData_Fork
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  projectilePrefab: {fileID: 3091702779332048824, guid: 9bcebc6f94b231740a5144098fe2ea13, type: 3}
+  stats:
+  - {fileID: 11400000, guid: e1f7efe2fb56ec049b7f17515692af58, type: 2}

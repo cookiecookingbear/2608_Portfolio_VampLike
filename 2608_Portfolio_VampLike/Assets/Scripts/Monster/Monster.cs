@@ -13,13 +13,15 @@ public class Monster : MonoBehaviour
     private void Start()
     {
         Start_Initialize(stats);
+        combat.Damaged_knockback_event += move.GetKnockedback;
+
     }
 
 
     private void Start_Initialize(Monster_Stats stats)
     {
-        move.Init(stats.moveSpeed);
-        combat.Init(stats.power, stats.hp);
+        move.Init(stats.MoveSpeed,stats.KnockbackStunTime);
+        combat.Init(stats.Power, stats.Hp);
     }
 
     

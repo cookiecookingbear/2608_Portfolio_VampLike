@@ -9,6 +9,7 @@ using UnityEngine;
 public interface IDamageable
 {
     void TakeDamage(float damage);
+    void TakeDamage(float damage,float knockbackPower);
 }
 
 /// <summary>
@@ -34,4 +35,26 @@ public interface IProjectile
 {
     void GetPower(float power);
     //float GiveDamage();
+}
+
+/// <summary>
+/// 오브젝트 풀링을 적용할 오브젝트에 적용하는 인터페이스
+/// </summary>
+public interface IPoolable
+{
+    void PoolInit(IObjectPool affiliation);
+    GameObject GameObject { get; }
+}
+
+
+/// <summary>
+/// 오브젝트 풀링을 관리할 풀에 적용하는 인터페이스
+/// </summary>
+public interface IObjectPool
+{
+    /// <summary>
+    /// 오브젝트를 다시 풀에 반납할 때 사용
+    /// SetActive(false)처리는 각 IPoolable에서 처리 하고 Return하는것으로 함.
+    /// </summary>
+    void Return(IPoolable obj);
 }

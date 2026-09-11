@@ -13,6 +13,7 @@ public class Monster_Combat : MonoBehaviour, IDamageable
     private int projecitleLayer;
 
     public Action Damaged_event;
+    public Action<float> Damaged_knockback_event;
     public Action Dead_event;
 
     private void Awake()
@@ -43,6 +44,13 @@ public class Monster_Combat : MonoBehaviour, IDamageable
 
         InvokeAnimationEvent(hp);
         print($"남은 체력: {hp}");
+    }
+
+    public void TakeDamage(float power, float knockbackPower)
+    {
+        TakeDamage(power);
+
+        Damaged_knockback_event?.Invoke(knockbackPower);
     }
 
     private void InvokeAnimationEvent(float hp)

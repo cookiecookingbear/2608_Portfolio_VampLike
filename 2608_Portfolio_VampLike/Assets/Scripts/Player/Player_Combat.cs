@@ -49,6 +49,11 @@ public class Player_Combat : MonoBehaviour, IDamageable
         print($"{damage}의 피해, hp:{hp}");
     }
 
+    public void TakeDamage(float damage, float knockbackPower)
+    {
+        //미구현
+    }
+
     private void Update_CountInvulnerableTimer()
     {
         if(invulnerableTimer <= 0

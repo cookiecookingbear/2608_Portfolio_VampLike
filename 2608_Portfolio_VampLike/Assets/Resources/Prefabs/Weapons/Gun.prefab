@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6439120230674276715}
   - component: {fileID: 6683627713497554260}
+  - component: {fileID: 5421046236452477547}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -46,3 +47,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   weaponData: {fileID: 0}
   detector: {fileID: 0}
+  myPool: {fileID: 5421046236452477547}
+--- !u!114 &5421046236452477547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989172048790389625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53889d2b5c0c62d48bf499ba83cac150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPool

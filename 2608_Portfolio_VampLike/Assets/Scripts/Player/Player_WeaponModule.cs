@@ -34,6 +34,10 @@ public class Player_WeaponModule : MonoBehaviour
             SelectWeapon(catalogue.WeaponInfoList[1]);
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SelectWeapon(catalogue.WeaponInfoList[2]);
+        }
     }
     #endregion
 
