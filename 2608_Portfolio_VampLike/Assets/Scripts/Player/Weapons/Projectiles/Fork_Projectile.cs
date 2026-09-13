@@ -63,7 +63,9 @@ public class Fork_Projectile : MonoBehaviour,IProjectile, IPoolable
         enemy.TakeDamage(power, knockbackPower);
 
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
+
+        affiliation.Return(this);
     }
     private void Update_CountDuration()
     {
