@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2569342195235009839}
   - component: {fileID: 9088903697590212732}
+  - component: {fileID: -863742348117721571}
   m_Layer: 0
   m_Name: Fork
   m_TagString: Untagged
@@ -46,3 +47,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Fork
   weaponData: {fileID: 0}
   detector: {fileID: 0}
+  myPool: {fileID: -863742348117721571}
+--- !u!114 &-863742348117721571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218241852553075625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53889d2b5c0c62d48bf499ba83cac150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
+  preWarmCount: 10

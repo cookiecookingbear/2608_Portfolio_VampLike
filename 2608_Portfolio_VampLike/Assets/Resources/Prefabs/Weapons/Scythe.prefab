@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6598115149565659281}
   - component: {fileID: 6778717644623113083}
+  - component: {fileID: 7498121320937922681}
   m_Layer: 0
   m_Name: Scythe
   m_TagString: Untagged
@@ -46,3 +47,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Scythe
   weaponData: {fileID: 0}
   detector: {fileID: 0}
+  myPool: {fileID: 7498121320937922681}
+--- !u!114 &7498121320937922681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506129828079447356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53889d2b5c0c62d48bf499ba83cac150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
+  preWarmCount: 12

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 17
+  controlID: 27
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 0
-  controlID: 18
+  controlID: 28
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 112}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 19
+  controlID: 29
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 112}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 112
+  controlID: 106
   draggingID: 0
 --- !u!114 &14
 MonoBehaviour:
@@ -1694,6 +1694,8 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
+      - m_Data: -19236
+      - m_Data: -1364
       - m_Data: -1362
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -1808,7 +1810,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Animations/Monster
+    - Assets/Scripts/Monster
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1818,7 +1820,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Animations/Monster
+  - Assets/Scripts/Monster
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\keoun\Desktop\unity\2608_Portfolio_VampLike\2608_Portfolio_VampLike
   m_LockTracker:
@@ -1827,15 +1829,12 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs:
-    - m_Data: 68198
+    - m_Data: 68222
     m_LastClickedID:
-      m_Data: 68198
+      m_Data: 68222
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 63378
-    - m_Data: 67824
-    - m_Data: 67826
-    - m_Data: 67828
+    - m_Data: 63382
     - m_Data: 67830
     - m_Data: 67832
     - m_Data: 67834
@@ -1846,6 +1845,9 @@ MonoBehaviour:
     - m_Data: 67844
     - m_Data: 67846
     - m_Data: 67848
+    - m_Data: 67850
+    - m_Data: 67852
+    - m_Data: 67854
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1879,10 +1881,7 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 63378
-    - m_Data: 67824
-    - m_Data: 67826
-    - m_Data: 67828
+    - m_Data: 63382
     - m_Data: 67830
     - m_Data: 67832
     - m_Data: 67834
@@ -1893,6 +1892,9 @@ MonoBehaviour:
     - m_Data: 67844
     - m_Data: 67846
     - m_Data: 67848
+    - m_Data: 67850
+    - m_Data: 67852
+    - m_Data: 67854
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1920,11 +1922,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs:
-    - m_Data: 68296
+    m_SelectedInstanceIDs: []
     m_LastClickedEntityId:
-      m_Data: 68296
-    m_HadKeyboardFocusLastEvent: 0
+      m_Data: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 50742
     - m_Data: 50388

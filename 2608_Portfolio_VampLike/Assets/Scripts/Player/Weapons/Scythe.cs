@@ -6,6 +6,7 @@ public class Scythe : MonoBehaviour,IWeapon
     [SerializeField] private WeaponData weaponData;
 
     [SerializeField] private Player_EnemyDetector detector;
+    [SerializeField] private ObjectPool myPool;
 
     private Coroutine fireCoroutine;
 
@@ -28,6 +29,8 @@ public class Scythe : MonoBehaviour,IWeapon
         stats = weaponData.Stats;
         currentStats = stats[weaponLevel];
         weaponLevel++;
+
+        myPool.InitObjectPool(weaponData.ProjectilePrefab,true);
     }
 
     public void StartFireCoroutine()
@@ -56,7 +59,9 @@ public class Scythe : MonoBehaviour,IWeapon
                 float instantiatePositionY = Mathf.Sin(Mathf.Deg2Rad * (360f / maxProjectileCount * i));
                 Vector2 instantitatePosition = new Vector2(instantiatePositionX, instantiatePositionY) * orbitRadius;
 
-                GameObject scytheProjectile = Instantiate(weaponData.ProjectilePrefab, transform,true);
+                //GameObject scytheProjectile = Instantiate(weaponData.ProjectilePrefab, transform,true);
+                GameObject scytheProjectile = myPool.UseObject();
+
                 Scythe_Projectile obj = scytheProjectile.GetComponent<Scythe_Projectile>();
 
                 obj.Init(-projectileSpeed, instantitatePosition, currentStats.ProjectileLifetimeDuration);

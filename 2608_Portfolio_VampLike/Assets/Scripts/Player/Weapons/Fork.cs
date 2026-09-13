@@ -6,6 +6,7 @@ public class Fork : MonoBehaviour,IWeapon
     [SerializeField] private WeaponData weaponData;
 
     [SerializeField] private Player_EnemyDetector detector;
+    [SerializeField] private ObjectPool myPool;
 
     private Coroutine fireCoroutine;
 
@@ -22,6 +23,8 @@ public class Fork : MonoBehaviour,IWeapon
         stats = weaponData.Stats;
         currentStats = stats[weaponLevel];
         weaponLevel++;
+
+        myPool.InitObjectPool(weaponData.ProjectilePrefab);
     }
 
     public void StartFireCoroutine()
@@ -40,10 +43,11 @@ public class Fork : MonoBehaviour,IWeapon
         {
             Vector2 direction = detector.DetectNearestMonsterDirection();
 
-            GameObject projectile = Instantiate(weaponData.ProjectilePrefab, transform.position, Quaternion.Euler(direction));
+            //GameObject projectile = Instantiate(weaponData.ProjectilePrefab, transform.position, Quaternion.Euler(direction));
+            GameObject projectile = myPool.UseObject();
 
             Fork_Projectile obj = projectile.GetComponent<Fork_Projectile>();
-            obj.Init(direction, currentStats.ProjectileSpeed, currentStats.ProjectileLifetimeDuration, currentStats.KnockbackPower);
+            obj.Init(transform.position, direction, currentStats.ProjectileSpeed, currentStats.ProjectileLifetimeDuration, currentStats.KnockbackPower);
             obj.GetPower(currentStats.Power);
 
             yield return new WaitForSeconds(currentStats.Cooldown);

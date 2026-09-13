@@ -2,13 +2,17 @@
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
-public class Fork_Projectile : MonoBehaviour,IProjectile
+public class Fork_Projectile : MonoBehaviour,IProjectile, IPoolable
 {
     private Rigidbody2D rb;
     private float power;
     private int enemyLayer;
     private float duration;
     private float knockbackPower;
+
+    //IPoolable
+    private IObjectPool affiliation;
+    public GameObject GameObject => this.gameObject;
 
     private void Awake()
     {
@@ -18,21 +22,23 @@ public class Fork_Projectile : MonoBehaviour,IProjectile
 
     private void Update()
     {
-        if (duration <= 0)
-        {
-            duration = 0;
-            Destroy(gameObject);
-        }
-
-        duration -= Time.deltaTime;
+        Update_CountDuration();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         GiveDamage(other);
     }
 
-    public void Init(Vector3 dir, float speed, float duration,float knockbackPower)
+    private void OnDisable()
     {
+        transform.up = Vector2.up;
+        rb.linearVelocity = Vector2.zero;
+        knockbackPower = 0;
+    }
+
+    public void Init(Vector2 startingPosition, Vector3 dir, float speed, float duration,float knockbackPower)
+    {
+        transform.position = startingPosition;
         transform.up = dir;
         rb.linearVelocity = dir * speed;
         this.duration = duration;
@@ -44,6 +50,11 @@ public class Fork_Projectile : MonoBehaviour,IProjectile
         this.power = power;
     }
 
+    public void PoolInit(IObjectPool affiliation)
+    {
+        this.affiliation = affiliation;
+    }
+
     private void GiveDamage(Collider2D other)
     {
         if (other.gameObject.layer != enemyLayer) return;
@@ -53,5 +64,16 @@ public class Fork_Projectile : MonoBehaviour,IProjectile
 
 
         Destroy(gameObject);
+    }
+    private void Update_CountDuration()
+    {
+        if (duration <= 0)
+        {
+            duration = 0;
+            //Destroy(gameObject);
+            affiliation.Return(this);
+        }
+
+        duration -= Time.deltaTime;
     }
 }

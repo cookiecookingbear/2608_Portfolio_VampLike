@@ -15,3 +15,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3091702779332048824, guid: 9bcebc6f94b231740a5144098fe2ea13, type: 3}
   stats:
   - {fileID: 11400000, guid: e1f7efe2fb56ec049b7f17515692af58, type: 2}
+  - {fileID: 11400000, guid: 1dfa4e5712a0d4e45893c0322f2cbea2, type: 2}
+  - {fileID: 11400000, guid: d28acec449f98684f8d01d37628c9938, type: 2}
+  - {fileID: 11400000, guid: 234a432d124fade429e2a0b554e0ba31, type: 2}
+  - {fileID: 11400000, guid: d92f34f79702cd740ba7b68204d55425, type: 2}
+  - {fileID: 11400000, guid: 4f2ae69dd0b99284ab4a43d9cda0906a, type: 2}

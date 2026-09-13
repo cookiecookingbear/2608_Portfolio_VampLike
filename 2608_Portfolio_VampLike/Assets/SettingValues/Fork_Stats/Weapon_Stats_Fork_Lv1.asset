@@ -17,4 +17,4 @@ MonoBehaviour:
   projectileSpeed: 8
   maxProjectileCount: 0
   projectileLifetimeDuration: 10
-  knockbackPower: 1
+  knockbackPower: 9
