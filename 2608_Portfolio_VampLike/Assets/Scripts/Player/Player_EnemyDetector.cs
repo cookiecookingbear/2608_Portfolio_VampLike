@@ -26,4 +26,29 @@ public class Player_EnemyDetector : MonoBehaviour
 
         return direction.normalized;
     }
+
+    public Vector2[] DetectAndReturnRandomEnemyPositions(int enemyCount)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectRadius, enemyLayerMask);
+
+        Vector2[] enemyPositions = new Vector2[enemyCount];
+
+        //감지 0 처리
+        if (colliders.Length == 0)
+        {
+            for (int i  = 0;  i < enemyCount; i++)
+            {
+                float randomX = Random.Range(-9f, 9f);
+                float randomY = Random.Range(-5f, 5f);
+                enemyPositions[i] = new Vector2(randomX, randomY);
+            }
+            return enemyPositions;
+        }
+
+        //Linq
+
+        //enemyCount>감지수 처리
+        
+        return enemyPositions;
+    }
 }
