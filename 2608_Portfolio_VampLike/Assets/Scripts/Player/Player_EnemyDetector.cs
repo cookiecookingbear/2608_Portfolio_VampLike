@@ -29,6 +29,7 @@ public class Player_EnemyDetector : MonoBehaviour
 
     public Vector2[] DetectAndReturnRandomEnemyPositions(int enemyCount)
     {
+        //적 콜라이더 감지
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectRadius, enemyLayerMask);
 
         Vector2[] enemyPositions = new Vector2[enemyCount];
@@ -46,9 +47,67 @@ public class Player_EnemyDetector : MonoBehaviour
         }
 
         //Linq
-
-        //enemyCount>감지수 처리
+        colliders.ShuffleArray<Collider2D>(enemyCount);
+        Collider2D[] enemyColliders = colliders.Take(enemyCount).ToArray();
         
-        return enemyPositions;
+        
+        
+        if(enemyColliders.Length >= enemyCount)
+        {
+            for (int i = 0; i < enemyCount; i++)
+            {
+                enemyPositions[i] = enemyColliders[i].transform.position;
+            }
+        }
+        else //enemyCollidres.Length < enemyCount
+        {
+            for(int i = 0; i < enemyColliders.Length; i++)
+            {
+                enemyPositions[i] = enemyColliders[i].transform.position;
+            }
+            for(int i = enemyColliders.Length; i< enemyCount; i++)
+            {
+                float randomX = Random.Range(-9f, 9f);
+                float randomY = Random.Range(-5f, 5f);
+                enemyPositions[i] = new Vector2(randomX, randomY);
+            }
+        }
+
+            return enemyPositions;
     }
+/*
+    #region Testing
+
+    private void Update()
+    {
+        Testing();
+    }
+    private void Testing()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Vector2[] test = DetectAndReturnRandomEnemyPositions(1);
+            foreach(Vector2 position in test)
+            {
+                print(position);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Vector2[] test = DetectAndReturnRandomEnemyPositions(2);
+            foreach (Vector2 position in test)
+            {
+                print(position);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Vector2[] test = DetectAndReturnRandomEnemyPositions(3);
+            foreach (Vector2 position in test)
+            {
+                print(position);
+            }
+        }
+    }
+    #endregion*/
 }

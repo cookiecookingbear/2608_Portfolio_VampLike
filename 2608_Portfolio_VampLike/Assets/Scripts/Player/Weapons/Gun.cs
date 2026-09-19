@@ -27,16 +27,6 @@ public class Gun : MonoBehaviour, IWeapon
         myPool.InitObjectPool(weaponData.ProjectilePrefab);
     }
 
-    public void StartFireCoroutine()
-    {
-        fireCoroutine = StartCoroutine("Fire");
-    }
-
-    public void StopFireCoroutine()
-    {
-        StopCoroutine(fireCoroutine);
-    }
-
     private IEnumerator Fire()
     {
         while (true)
@@ -52,6 +42,17 @@ public class Gun : MonoBehaviour, IWeapon
 
             yield return new WaitForSeconds(currentStats.Cooldown);
         }//while
+    }
+
+    #region IWeapon
+    public void StartFireCoroutine()
+    {
+        fireCoroutine = StartCoroutine("Fire");
+    }
+
+    public void StopFireCoroutine()
+    {
+        StopCoroutine(fireCoroutine);
     }
 
     public void Upgrade()
@@ -72,5 +73,5 @@ public class Gun : MonoBehaviour, IWeapon
             print("무기가 최고단계에 도달함");
         }
     }
-
+    #endregion
 }

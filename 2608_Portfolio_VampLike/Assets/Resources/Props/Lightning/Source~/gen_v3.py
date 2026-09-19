@@ -1,6 +1,7 @@
 import zlib, struct, os, random, sys
 
 W, H = 14, 100
+PAD = 8                      # extra columns each side of the walk area; the flash draws into them
 OUT = os.path.dirname(os.path.abspath(__file__))
 
 CORE  = (255, 255, 255, 255)
@@ -95,24 +96,26 @@ def build(seed, mid_bias=0):
         if rng.random() < 0.25: dirx = -dirx
         branch(o, 0, rng.randint(3, 9), dirx)
 
-    # ---- impact flash: small flattened burst + scattered sparks ----
-    ix, iy = x, H - 4
+    # ---- impact flash on the ground line: core on the bottom row, burst spreads up and sideways ----
+    ix, iy = x, H - 1
     put((ix, iy), 4)
     for dx in range(-3, 4):
         put((ix + dx, iy), 3 if abs(dx) <= 1 else 2)
-    for dx, dy in ((-2, -1), (2, -1), (-2, 1), (2, 1), (0, -2), (0, 2), (-4, 0), (4, 0)):
+    for dx, dy in ((-2, -1), (2, -1), (0, -2), (-4, 0), (4, 0), (-3, -1), (3, -1)):
         put((ix + dx, iy + dy), 2)
-    for dx, dy in ((-5, -2), (5, -2), (-4, 2), (4, 2), (-6, 0), (6, 0)):
+    for dx, dy in ((-5, -2), (5, -2), (-6, 0), (6, 0), (-1, -3), (1, -3)):
         put((ix + dx, iy + dy), 1)
+    for dx, dy in ((-7, -4), (7, -3), (-5, -6), (6, -6)):
+        layers.setdefault((ix + dx, iy + dy), 3)      # sparks thrown up from the strike
     # connect trunk end to the impact point
     for c in line((x, end_y), (ix, iy - 2)):
         put(c, 4)
 
     COL = {1: GOLD, 2: YEL, 3: PALE, 4: CORE}
-    px = [[CLEAR] * W for _ in range(H)]
+    px = [[CLEAR] * (W + 2 * PAD) for _ in range(H)]
     for (cx, cy), v in layers.items():
-        if 0 <= cx < W and 0 <= cy < H:
-            px[cy][cx] = COL[v]
+        if 0 <= cx + PAD < W + 2 * PAD and 0 <= cy < H:
+            px[cy][cx + PAD] = COL[v]
     return px
 
 def write_png(path, pix, scale=1):
