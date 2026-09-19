@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Weapon_Stats_Lightning_Lv6
   m_EditorClassIdentifier: Assembly-CSharp::Weapon_Stats
   power: 25
-  cooldown: 7
+  cooldown: 5
   projectileSpeed: 0
   maxProjectileCount: 3
-  projectileLifetimeDuration: 0.25
+  projectileLifetimeDuration: 0.1
   knockbackPower: 0
   areaMagnification: 1.5

@@ -16,6 +16,6 @@ MonoBehaviour:
   cooldown: 10
   projectileSpeed: 0
   maxProjectileCount: 1
-  projectileLifetimeDuration: 0.25
+  projectileLifetimeDuration: 0.1
   knockbackPower: 0
   areaMagnification: 0.75
