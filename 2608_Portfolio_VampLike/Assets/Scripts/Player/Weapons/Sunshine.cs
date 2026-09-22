@@ -41,6 +41,7 @@ public class Sunshine : MonoBehaviour, IWeapon
         this.weaponData = weaponData;
         stats = weaponData.Stats;
         currentStats = stats[weaponLevel];
+        applyAreaSize();
         weaponLevel++;
     }
     private void Awake()
@@ -112,8 +113,6 @@ public class Sunshine : MonoBehaviour, IWeapon
     {
         Vector3 scale = new Vector3(currentStats.AreaMagnification, currentStats.AreaMagnification, 1f);
         transform.localScale = scale;
-        areaTransform.localScale = scale;
-        beamTransform.localScale = scale;
     }
 
 #endregion
