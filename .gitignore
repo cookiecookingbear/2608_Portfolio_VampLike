@@ -73,5 +73,30 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-/2608_Portfolio_VampLike/Library
-/2608_Portfolio_VampLike/Temp
+# ─────────────────────────────────────────────────────────────
+# 이 저장소는 유니티 프로젝트가 한 단계 아래(2608_Portfolio_VampLike/)에 있다.
+# 위쪽 템플릿 규칙들은 앞에 "/"가 붙어 있어서 "이 파일이 있는 폴더 바로 아래"만
+# 가리키므로, 중첩된 유니티 폴더에는 닿지 않는다.
+# 그래서 같은 대상들을 아래에 전체 경로로 다시 적는다.
+# ─────────────────────────────────────────────────────────────
+
+# 유니티가 재생성하는 캐시 (용량 큼)
+/2608_Portfolio_VampLike/[Ll]ibrary/
+/2608_Portfolio_VampLike/[Tt]emp/
+
+# 에디터 로그 — 실행할 때마다 바뀜
+/2608_Portfolio_VampLike/[Ll]ogs/
+
+# 이 PC의 개인 에디터 설정 (창 배치, 검색 인덱스 등) — 프로젝트 내용 아님
+/2608_Portfolio_VampLike/[Uu]ser[Ss]ettings/
+
+# Visual Studio 빌드 중간 산출물
+/2608_Portfolio_VampLike/[Oo]bj/
+
+# 빌드 결과물
+/2608_Portfolio_VampLike/[Bb]uild/
+/2608_Portfolio_VampLike/[Bb]uilds/
+
+# 메모리 캡처 / 녹화 — 용량이 매우 커질 수 있음
+/2608_Portfolio_VampLike/[Mm]emoryCaptures/
+/2608_Portfolio_VampLike/[Rr]ecordings/
