@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Player_EnemyDetector : MonoBehaviour
 {
@@ -75,7 +76,8 @@ public class Player_EnemyDetector : MonoBehaviour
 
             return enemyPositions;
     }
-/*
+
+/* Test
     #region Testing
 
     private void Update()
