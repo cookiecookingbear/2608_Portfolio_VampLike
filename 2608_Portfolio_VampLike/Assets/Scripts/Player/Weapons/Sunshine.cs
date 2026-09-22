@@ -27,14 +27,7 @@ public class Sunshine : MonoBehaviour, IWeapon
     private CapsuleCollider2D capsuleCollider;
     List<Collider2D> enemies = new List<Collider2D>();
 
-    private void Start()
-    {
-        enemyLayerMask = LayerMask.GetMask("Enemy");
-        filter.useTriggers = true;
-
-        filter.SetLayerMask(enemyLayerMask);
-    }
-
+    
     public void Init(Player_EnemyDetector detector, WeaponData weaponData)
     {
         this.detector = detector;
