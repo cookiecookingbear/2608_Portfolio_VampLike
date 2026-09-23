@@ -24,29 +24,40 @@ public class Player_WeaponModule : MonoBehaviour
     }
     private void CheatKey()
     {
+        //gun
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SelectWeapon(catalogue.WeaponInfoList[0]);
         }
 
+        //scythe
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SelectWeapon(catalogue.WeaponInfoList[1]);
         }
 
+        //fork(v1)
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SelectWeapon(catalogue.WeaponInfoList[2]);
         }
 
+        //lightning
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             SelectWeapon(catalogue.WeaponInfoList[3]);
         }
 
+        //sunshine
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             SelectWeapon(catalogue.WeaponInfoList[4]);
+        }
+
+        //fork_v2
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            SelectWeapon(catalogue.WeaponInfoList[5]);
         }
     }
     #endregion
