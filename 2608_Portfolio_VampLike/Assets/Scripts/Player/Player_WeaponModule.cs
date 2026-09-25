@@ -13,7 +13,7 @@ public class Player_WeaponModule : MonoBehaviour
     [SerializeField] private WeaponCatalogue catalogue;
 
     //private List<IWeapon> weapons = new List<IWeapon>();
-    private Dictionary<WeaponData, IWeapon> weapons = new Dictionary<WeaponData, IWeapon>();
+    private Dictionary<WeaponData, Weapon_Base> weapons = new Dictionary<WeaponData, Weapon_Base>();
 
     //private int weaponCount = 0;
 
@@ -36,7 +36,7 @@ public class Player_WeaponModule : MonoBehaviour
             SelectWeapon(catalogue.WeaponInfoList[1]);
         }
 
-        //fork(v1)
+        //fork(v2)
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SelectWeapon(catalogue.WeaponInfoList[2]);
@@ -54,11 +54,6 @@ public class Player_WeaponModule : MonoBehaviour
             SelectWeapon(catalogue.WeaponInfoList[4]);
         }
 
-        //fork_v2
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            SelectWeapon(catalogue.WeaponInfoList[5]);
-        }
     }
     #endregion
 
@@ -77,20 +72,20 @@ public class Player_WeaponModule : MonoBehaviour
             return;
         }
         //이미 있는 무기
-        UpgrageWeapon(weaponInfo);
+        UpgradeWeapon(weaponInfo);
     }
         
     private void AddWeapon(WeaponInfo weaponInfo)
     {
         GameObject newWeaponObject = Instantiate(weaponInfo.WeaponPrefab, gameObject.transform);
-        IWeapon newWeapon = newWeaponObject.GetComponent<IWeapon>();
+        Weapon_Base newWeapon = newWeaponObject.GetComponent<Weapon_Base>();
 
         newWeapon.Init(detector, weaponInfo.WeaponData);
         newWeapon.StartFireCoroutine();
         weapons.Add(weaponInfo.WeaponData, newWeapon);
     }
 
-    private void UpgrageWeapon(WeaponInfo weaponInfo)
+    private void UpgradeWeapon(WeaponInfo weaponInfo)
     {
         weapons[weaponInfo.WeaponData].Upgrade();
     }

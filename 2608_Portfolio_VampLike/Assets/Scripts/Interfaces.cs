@@ -6,10 +6,18 @@ using UnityEngine;
 /// <summary>
 /// 타격을 받을 수 있는 물체가 상속
 /// </summary>
-public interface IDamageable
+public interface IDamageable 
 {
     void TakeDamage(float damage);
     void TakeDamage(float damage,float knockbackPower);
+}
+
+/// <summary>
+/// 업그레이드가 가능한 오브젝트가 가지는 인터페이스
+/// </summary>
+public interface IUpgradeable
+{
+    void Upgrade();
 }
 
 /// <summary>
@@ -18,12 +26,16 @@ public interface IDamageable
 /// Start/StopFireCoroutine : 플레이어의 웨폰모듈에서 무기를 통제할 수 있게끔 함
 /// Upgrade : 웨폰모듈에서 업그레이드 명령을 받아 업그레이드를 처리할 수 있게 함
 /// </summary>
-public interface IWeapon
+public interface IWeapon : IUpgradeable
 {
     void StartFireCoroutine();
     void StopFireCoroutine();
     void Init(Player_EnemyDetector detector,WeaponData weaponData);
-    void Upgrade();
+}
+
+public interface IGear
+{
+
 }
 
 /// <summary>

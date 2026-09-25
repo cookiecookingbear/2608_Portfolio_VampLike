@@ -4,41 +4,24 @@ using UnityEngine;
 
 //햇빛은 별도의 투사체가 없으므로, 투사체의 역할까지 무기가 분담해야 한다.
 [RequireComponent(typeof(CapsuleCollider2D))]
-public class Sunshine : MonoBehaviour, IWeapon
+public class Sunshine : Weapon_Base
 {
-    [SerializeField] private WeaponData weaponData;
-
-    [SerializeField] private Player_EnemyDetector detector;
-
-    private Coroutine fireCoroutine;
-
-    private int weaponLevel = 0;
-    private Weapon_Stats[] stats;
-    private Weapon_Stats currentStats;
-
-    private bool isUpgradeAvailable = true;
-
     [SerializeField] private Transform areaTransform;
     [SerializeField] private Transform beamTransform;
-
 
     [SerializeField] private ContactFilter2D filter;
     [SerializeField] private LayerMask enemyLayerMask;
     private CapsuleCollider2D capsuleCollider;
     List<Collider2D> enemies = new List<Collider2D>();
 
-    
-    public void Init(Player_EnemyDetector detector, WeaponData weaponData)
+    //햇빛은 오브젝트 풀이 없으니 풀링 호출을 하면 안된다.
+    protected override void SetupObjectPool()
     {
-        this.detector = detector;
-        this.weaponData = weaponData;
-        stats = weaponData.Stats;
-        currentStats = stats[weaponLevel];
-        applyAreaSize();
-        weaponLevel++;
+        return;
     }
+
     private void Awake()
-    {
+    {   
         enemyLayerMask = LayerMask.GetMask("Enemy");
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         if (capsuleCollider == null)
@@ -49,7 +32,13 @@ public class Sunshine : MonoBehaviour, IWeapon
         filter.useTriggers = true;
         filter.SetLayerMask(enemyLayerMask);
     }
-    private IEnumerator Fire()
+
+    public override void Init(Player_EnemyDetector detector, WeaponData weaponData)
+    {
+        base.Init(detector, weaponData);
+    }
+
+    protected override IEnumerator Fire()
     {
         while (true)
         {
@@ -71,35 +60,16 @@ public class Sunshine : MonoBehaviour, IWeapon
         enemy.TakeDamage(currentStats.Power);
 
     }
-    #region IWeapon
-    public void StartFireCoroutine()
+    
+    public override void Upgrade()
     {
-        fireCoroutine = StartCoroutine("Fire");
+        base.Upgrade();
     }
 
-    public void StopFireCoroutine()
+    protected override void ApplyStats()
     {
-        StopCoroutine(fireCoroutine);
-    }
-
-    public void Upgrade()
-    {
-        if (isUpgradeAvailable == false)
-        {
-            print("이미 무기가 최고단계임");
-            return;
-        }
-
-        currentStats = stats[weaponLevel];
+        base.ApplyStats();
         applyAreaSize();
-        weaponLevel++;
-        print($"현재 무기 레벨: {weaponLevel}");
-
-        if (weaponLevel == 6)
-        {
-            isUpgradeAvailable = false;
-            print("무기가 최고단계에 도달함");
-        }
     }
 
     private void applyAreaSize()
@@ -108,5 +78,4 @@ public class Sunshine : MonoBehaviour, IWeapon
         transform.localScale = scale;
     }
 
-#endregion
 }
