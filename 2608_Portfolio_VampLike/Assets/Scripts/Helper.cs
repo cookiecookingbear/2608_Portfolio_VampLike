@@ -37,9 +37,9 @@ public static class Helper
     public static void ShuffleArray<T>(this T[] array, int quantity)
     {
         //exception
-        if(quantity < 0 || quantity > array.Length)
+        if(quantity < 0)
         {
-            throw new System.ArgumentOutOfRangeException(nameof(quantity), quantity, "quantity는 0이상, 배열의 크기 이하여야 합니다.");
+            throw new System.ArgumentOutOfRangeException(nameof(quantity), quantity, "quantity는 0이상이어야 합니다.");
         }
         quantity = Mathf.Min(quantity, array.Length);
 
