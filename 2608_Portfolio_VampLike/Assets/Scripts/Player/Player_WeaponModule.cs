@@ -36,7 +36,7 @@ public class Player_WeaponModule : MonoBehaviour
             SelectWeapon(catalogue.WeaponInfoList[1]);
         }
 
-        //fork(v1)
+        //fork(v2)
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SelectWeapon(catalogue.WeaponInfoList[2]);
@@ -54,11 +54,6 @@ public class Player_WeaponModule : MonoBehaviour
             SelectWeapon(catalogue.WeaponInfoList[4]);
         }
 
-        //fork_v2
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            SelectWeapon(catalogue.WeaponInfoList[5]);
-        }
     }
     #endregion
 
@@ -77,7 +72,7 @@ public class Player_WeaponModule : MonoBehaviour
             return;
         }
         //이미 있는 무기
-        UpgrageWeapon(weaponInfo);
+        UpgradeWeapon(weaponInfo);
     }
         
     private void AddWeapon(WeaponInfo weaponInfo)
@@ -90,7 +85,7 @@ public class Player_WeaponModule : MonoBehaviour
         weapons.Add(weaponInfo.WeaponData, newWeapon);
     }
 
-    private void UpgrageWeapon(WeaponInfo weaponInfo)
+    private void UpgradeWeapon(WeaponInfo weaponInfo)
     {
         weapons[weaponInfo.WeaponData].Upgrade();
     }
