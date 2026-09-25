@@ -13,7 +13,7 @@ public class Player_WeaponModule : MonoBehaviour
     [SerializeField] private WeaponCatalogue catalogue;
 
     //private List<IWeapon> weapons = new List<IWeapon>();
-    private Dictionary<WeaponData, Weapon_Base> weapons = new Dictionary<WeaponData, Weapon_Base>();
+    private Dictionary<WeaponData, IWeapon> weapons = new Dictionary<WeaponData, IWeapon>();
 
     //private int weaponCount = 0;
 
@@ -78,7 +78,7 @@ public class Player_WeaponModule : MonoBehaviour
     private void AddWeapon(WeaponInfo weaponInfo)
     {
         GameObject newWeaponObject = Instantiate(weaponInfo.WeaponPrefab, gameObject.transform);
-        Weapon_Base newWeapon = newWeaponObject.GetComponent<Weapon_Base>();
+        IWeapon newWeapon = newWeaponObject.GetComponent<IWeapon>();
 
         newWeapon.Init(detector, weaponInfo.WeaponData);
         newWeapon.StartFireCoroutine();

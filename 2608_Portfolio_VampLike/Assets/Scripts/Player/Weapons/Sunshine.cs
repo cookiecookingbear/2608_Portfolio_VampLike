@@ -33,11 +33,6 @@ public class Sunshine : Weapon_Base
         filter.SetLayerMask(enemyLayerMask);
     }
 
-    public override void Init(Player_EnemyDetector detector, WeaponData weaponData)
-    {
-        base.Init(detector, weaponData);
-    }
-
     protected override IEnumerator Fire()
     {
         while (true)
@@ -61,11 +56,6 @@ public class Sunshine : Weapon_Base
 
     }
     
-    public override void Upgrade()
-    {
-        base.Upgrade();
-    }
-
     protected override void ApplyStats()
     {
         base.ApplyStats();
