@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Player_Move playerMove;
     [SerializeField] private Player_Combat playerCombat;
     [SerializeField] private Player_WeaponModule weaponModule;
+    [SerializeField] private Player_GearModule gearModule;
 
     [SerializeField] private Animator anim;
     [SerializeField] private SpriteRenderer spriteRenderer;

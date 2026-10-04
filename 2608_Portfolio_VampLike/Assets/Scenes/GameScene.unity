@@ -572,7 +572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717594791636942350, guid: 1847728f694a1aa42bb2a98244d1892d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7360410511172120480, guid: 1847728f694a1aa42bb2a98244d1892d, type: 3}
       propertyPath: m_IsActive
@@ -623,6 +623,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1847728f694a1aa42bb2a98244d1892d, type: 3}
+--- !u!1 &1265124127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1265124128}
+  - component: {fileID: 1265124129}
+  m_Layer: 3
+  m_Name: GearModule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1265124128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265124127}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1577994723}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1265124129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265124127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee03c16b7aaef8d48a5c9d063170c8e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_GearModule
+  catalogue: {fileID: 11400000, guid: e0a80c6c8a1ea334da38223d493471dd, type: 2}
 --- !u!1 &1577994722
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +702,7 @@ Transform:
   m_Children:
   - {fileID: 605802005}
   - {fileID: 440166999}
+  - {fileID: 1265124128}
   - {fileID: 2049056389}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -715,6 +761,7 @@ MonoBehaviour:
   playerMove: {fileID: 1577994724}
   playerCombat: {fileID: 2049056387}
   weaponModule: {fileID: 440167000}
+  gearModule: {fileID: 1265124129}
   anim: {fileID: 605802010}
   spriteRenderer: {fileID: 605802009}
 --- !u!1 &1625025321

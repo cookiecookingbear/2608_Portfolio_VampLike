@@ -33,9 +33,10 @@ public interface IWeapon : IUpgradeable
     void Init(Player_EnemyDetector detector,WeaponData weaponData);
 }
 
-public interface IGear
+public interface IGear : IUpgradeable
 {
-
+    void Init();
+    void UpdateGearOption();
 }
 
 /// <summary>
