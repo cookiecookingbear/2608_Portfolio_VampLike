@@ -12,7 +12,6 @@ public class Player_WeaponModule : MonoBehaviour
     [SerializeField] private Player_EnemyDetector detector;
     [SerializeField] private WeaponCatalogue catalogue;
 
-    //private List<IWeapon> weapons = new List<IWeapon>();
     private Dictionary<WeaponData, IWeapon> weapons = new Dictionary<WeaponData, IWeapon>();
 
     //private int weaponCount = 0;

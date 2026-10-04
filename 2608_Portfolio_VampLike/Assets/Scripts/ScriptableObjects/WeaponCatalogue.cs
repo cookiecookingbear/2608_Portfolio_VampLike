@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "WeaponCatalogue", menuName = "Scriptable Objects/WeaponCatalogue")]
+[CreateAssetMenu(fileName = "WeaponCatalogue", menuName = "Catalogues/WeaponCatalogue")]
 public class WeaponCatalogue : ScriptableObject
 {
     [SerializeField] private List<WeaponInfo> weaponInfoList;
