@@ -44,7 +44,13 @@ public abstract class Weapon_Base : MonoBehaviour, IWeapon
 
     public virtual void StopFireCoroutine()
     {
+        if(fireCoroutine == null)
+        {
+            Debug.Log("StopFireCoroutine Error, 멈출 코루틴이 없음");
+            return;
+        }
         StopCoroutine(fireCoroutine);
+        fireCoroutine = null;
     }
     #endregion
 
